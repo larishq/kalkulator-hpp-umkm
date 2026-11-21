@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kalkulator HPP & Harga Jual UMKM — Tim LarisHQ</title>
-<meta name="description" content="Kalkulator HPP dan harga jual gratis untuk UMKM Indonesia. Hitung HPP per unit, harga margin vs markup, dan harga minimum setelah potongan marketplace. Berjalan di browser.">
+<title>Kalkulator HPP UMKM — Tim LarisHQ</title>
+<meta name="description" content="Kalkulator HPP gratis untuk UMKM Indonesia. Hitung HPP per unit dari biaya satu batch, mode produksi atau reseller/dropship. Berjalan di browser, tanpa daftar.">
 <style>
-:root{--g:#2FA371;--ink:#17212b;--mut:#5b6672;--bg:#f6f8f7;--line:#dfe5e2;--warn:#b54708}
+:root{--g:#2FA371;--ink:#17212b;--mut:#5b6672;--bg:#f6f8f7;--line:#dfe5e2}
 *{box-sizing:border-box}
 body{margin:0;font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg)}
 main{max-width:760px;margin:0 auto;padding:24px 16px 48px}
@@ -19,23 +19,24 @@ label.f{display:block;font-weight:600;margin:12px 0 4px}
 small{display:block;color:var(--mut);font-size:.85rem;margin-bottom:4px}
 input[type=text],input[type=number]{width:100%;padding:10px 12px;font-size:1rem;border:1px solid var(--line);border-radius:8px}
 input:focus{outline:2px solid var(--g);border-color:var(--g)}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:560px){.row{grid-template-columns:1fr}}
 .res{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:baseline}
 .res b{font-size:1.15rem;text-align:right}
 .big{font-size:1.6rem!important;color:var(--g)}
 .note{color:var(--mut);font-size:.9rem}
-.warn{color:var(--warn);font-weight:600}
 button{background:var(--g);color:#fff;border:0;border-radius:8px;padding:10px 14px;font-size:1rem;cursor:pointer}
 button.sec{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.upsell{margin-top:16px;padding:14px 16px 16px;border:1px solid var(--line);border-radius:12px;background:rgba(47,163,113,.08)}
+.upsell h2{margin:0 0 8px;font-size:1.05rem;line-height:1.35}
+.upsell p{margin:0 0 12px;color:var(--mut);font-size:.95rem}
+.upsell a.btn{display:block;text-align:center;background:var(--g);color:#fff;text-decoration:none;border-radius:8px;padding:12px 14px;font-weight:700}
 footer{color:var(--mut);font-size:.85rem;margin-top:32px}
 a{color:#1d6b4a}
 </style>
 </head>
 <body>
 <main>
-<h1>Kalkulator HPP &amp; Harga Jual</h1>
-<p class="lead">Hitung HPP per unit, bandingkan harga margin dan markup, lalu cek harga minimum setelah potongan marketplace. Semua angka tetap di perangkat Anda.</p>
+<h1>Kalkulator HPP UMKM</h1>
+<p class="lead">Hitung HPP per unit dari biaya satu kali produksi atau satu kali belanja stok. Semua angka tetap di perangkat Anda.</p>
 
 <div class="card">
   <div class="mode" role="radiogroup" aria-label="Jenis usaha">
@@ -71,68 +72,22 @@ a{color:#1d6b4a}
     <span>HPP per unit</span><b class="big" id="hpp">–</b>
     <span>Total biaya</span><b id="total">–</b>
   </div>
-</div>
-
-<h2>Target laba</h2>
-<div class="card">
-  <div class="row">
-    <div>
-      <label class="f" for="margin">Margin dari harga jual (%)</label>
-      <small>Laba sebagai persen dari harga jual.</small>
-      <input id="margin" type="number" min="0" max="99" step="1" value="30">
-    </div>
-    <div>
-      <label class="f" for="markup">Markup dari HPP (%)</label>
-      <small>Laba sebagai persen dari modal.</small>
-      <input id="markup" type="number" min="0" step="1" value="30">
-    </div>
+  <div class="upsell">
+    <h2>Udah tahu HPP? Biar nggak rugi, hitung harga jual + potongan Shopee/TikTok otomatis</h2>
+    <p>HPP ini belum termasuk biaya admin dan program marketplace. Harga yang kelihatan untung bisa jadi minus setelah potongan. Kalkulator Harga Jual Anti Rugi menghitung harga minimum dan laba bersih per channel, di Excel + Google Sheets.</p>
+    <a class="btn" href="https://lynk.id/radagon99/g39xk0wnq4x9" target="_blank" rel="noopener">Checkout Rp19.000 di lynk.id</a>
+    <p class="note" style="margin:10px 0 0">Versi panduan langkah demi langkah juga ada di <a href="https://larishq.com/kalkulator-hpp">larishq.com/kalkulator-hpp</a>.</p>
   </div>
-  <div class="res" style="margin-top:14px">
-    <span>Harga saran (margin)</span><b id="hMargin">–</b>
-    <span>Harga saran (markup)</span><b id="hMarkup">–</b>
-  </div>
-  <p class="note">Target yang sama bisa menghasilkan harga berbeda. Pastikan Anda tahu yang mana yang dipakai.</p>
-</div>
-
-<h2>Potongan marketplace (opsional)</h2>
-<div class="card">
-  <p class="note" style="margin-top:0">Isi dengan tarif kategori dan program yang Anda ikuti, dari Seller Centre. Alat ini tidak menyimpan tarif resmi.</p>
-  <div class="row">
-    <div>
-      <label class="f" for="pot">Total potongan persen (%)</label>
-      <small>Contoh: admin + program, dijumlah.</small>
-      <input id="pot" type="number" min="0" max="99" step="0.01" value="0">
-    </div>
-    <div>
-      <label class="f" for="tetap">Biaya tetap per pesanan (Rp)</label>
-      <small>Biaya proses atau biaya nominal lain.</small>
-      <input id="tetap" type="text" inputmode="numeric" autocomplete="off" placeholder="0">
-    </div>
-  </div>
-  <label class="f" for="jual">Harga jual yang ingin dicek (Rp)</label>
-  <small>Kosongkan untuk memakai harga saran margin.</small>
-  <input id="jual" type="text" inputmode="numeric" autocomplete="off" placeholder="otomatis">
-
-  <div class="res" style="margin-top:14px">
-    <span>Uang diterima per pesanan</span><b id="terima">–</b>
-    <span>Laba per pesanan</span><b id="laba">–</b>
-    <span>Harga minimum (target margin)</span><b id="minMargin">–</b>
-    <span>Harga minimum (balik modal)</span><b id="minBep">–</b>
-  </div>
-  <p class="note" id="pesan"></p>
 </div>
 
 <h2>Rumus</h2>
 <div class="card note">
-  <p style="margin-top:0">HPP = total biaya ÷ unit layak jual (dibulatkan ke atas).<br>
-  Harga margin = HPP ÷ (1 − margin). Harga markup = HPP × (1 + markup).<br>
-  Uang diterima ≈ harga − harga × potongan% − biaya tetap.<br>
-  Harga minimum = (HPP + biaya tetap) ÷ (1 − margin − potongan%).</p>
-  <p style="margin-bottom:0">Biaya admin, program, iklan, dan ongkir ke pembeli bukan bagian HPP.</p>
+  <p style="margin-top:0">HPP per unit = total biaya satu batch (atau satu belanja stok) ÷ jumlah unit yang layak jual, dibulatkan ke atas ke rupiah penuh.</p>
+  <p style="margin-bottom:0">Biaya admin, program, iklan, dan ongkir ke pembeli bukan bagian HPP. Itu biaya penjualan, dihitung terpisah saat menentukan harga jual.</p>
 </div>
 
 <footer>
-  Dibuat <a href="https://larishq.com">Tim LarisHQ</a>. Kode terbuka, lisensi MIT. Hitungan hanya alat bantu; cek tarif resmi kanal Anda sebelum memasang harga.
+  Dibuat <a href="https://larishq.com">Tim LarisHQ</a>. Kode terbuka, lisensi MIT. Hitungan hanya alat bantu.
 </footer>
 </main>
 
@@ -142,7 +97,6 @@ a{color:#1d6b4a}
   var $ = function(id){ return document.getElementById(id); };
 
   function num(v){ var d = String(v == null ? '' : v).replace(/[^\d]/g, ''); return d ? Number(d) : 0; }
-  function pct(v){ var n = parseFloat(String(v).replace(',', '.')); return isFinite(n) && n > 0 ? n / 100 : 0; }
   function rp(n){ return 'Rp' + Math.round(n).toLocaleString('id-ID'); }
   function fmt(el){ var n = num(el.value); el.value = n ? n.toLocaleString('id-ID') : ''; }
 
@@ -176,23 +130,9 @@ a{color:#1d6b4a}
   function kalkulasi(o){
     var total = (o.bahan||0) + (o.kemasan||0) + (o.tenaga||0) + (o.overhead||0);
     var unit = o.unit || 0;
-    var r = { total: total, hpp: null, hMargin: null, hMarkup: null,
-              terima: null, laba: null, minMargin: null, minBep: null, pesan: '' };
+    var r = { total: total, hpp: null, pesan: '' };
     if (unit <= 0) { r.pesan = 'Isi jumlah unit untuk melihat HPP.'; return r; }
-    var hpp = Math.ceil(total / unit);
-    r.hpp = hpp;
-    var m = o.margin || 0, mk = o.markup || 0, p = o.pot || 0, t = o.tetap || 0;
-    if (m < 1) r.hMargin = Math.ceil(hpp / (1 - m));
-    r.hMarkup = Math.ceil(hpp * (1 + mk));
-    if (1 - p > 0) r.minBep = Math.ceil((hpp + t) / (1 - p));
-    if (1 - m - p > 0) r.minMargin = Math.ceil((hpp + t) / (1 - m - p));
-    else r.pesan = 'Margin + potongan sudah 100% atau lebih. Target itu tidak mungkin di kanal ini.';
-    var jual = o.jual > 0 ? o.jual : r.hMargin;
-    if (jual) {
-      r.terima = jual - jual * p - t;
-      r.laba = r.terima - hpp;
-      if (!r.pesan && r.laba < 0) r.pesan = 'Pada harga ini, setiap pesanan rugi setelah potongan.';
-    }
+    r.hpp = Math.ceil(total / unit);
     return r;
   }
   window.LarisHQKalkulator = { kalkulasi: kalkulasi };
@@ -201,37 +141,27 @@ a{color:#1d6b4a}
     var o = {
       bahan: num($('bahan').value), kemasan: num($('kemasan').value),
       tenaga: num($('tenaga').value), overhead: num($('overhead').value),
-      unit: num($('unit').value), margin: pct($('margin').value), markup: pct($('markup').value),
-      pot: pct($('pot').value), tetap: num($('tetap').value), jual: num($('jual').value)
+      unit: num($('unit').value)
     };
     var r = kalkulasi(o);
     $('total').textContent = rp(r.total) + (o.unit ? ' untuk ' + o.unit.toLocaleString('id-ID') + ' unit' : '');
     $('hpp').textContent = r.hpp == null ? '–' : rp(r.hpp);
-    $('hMargin').textContent = r.hMargin == null ? '–' : rp(r.hMargin);
-    $('hMarkup').textContent = r.hMarkup == null ? '–' : rp(r.hMarkup);
-    $('terima').textContent = r.terima == null ? '–' : rp(r.terima);
-    $('laba').textContent = r.laba == null ? '–' : rp(r.laba);
-    $('minMargin').textContent = r.minMargin == null ? '–' : rp(r.minMargin);
-    $('minBep').textContent = r.minBep == null ? '–' : rp(r.minBep);
-    var ps = $('pesan'); ps.textContent = r.pesan; ps.className = r.pesan ? 'note warn' : 'note';
   }
 
-  ['bahan','kemasan','tenaga','overhead','unit','tetap','jual'].forEach(function(id){
+  ['bahan','kemasan','tenaga','overhead','unit'].forEach(function(id){
     $(id).addEventListener('input', function(){ fmt(this); hitung(); });
   });
-  ['margin','markup','pot'].forEach(function(id){ $(id).addEventListener('input', hitung); });
   document.querySelectorAll('input[name=mode]').forEach(function(r){ r.addEventListener('change', relabel); });
 
   $('contoh').addEventListener('click', function(){
     document.querySelector('input[name=mode][value=produksi]').checked = true;
-    var v = { bahan: 180000, kemasan: 90000, tenaga: 100000, overhead: 50000, unit: 60, tetap: 1250 };
+    var v = { bahan: 180000, kemasan: 90000, tenaga: 100000, overhead: 50000, unit: 60 };
     Object.keys(v).forEach(function(k){ $(k).value = v[k].toLocaleString('id-ID'); });
-    $('margin').value = 30; $('markup').value = 30; $('pot').value = 14; $('jual').value = '';
     relabel();
   });
   $('reset').addEventListener('click', function(){
-    ['bahan','kemasan','tenaga','overhead','unit','tetap','jual'].forEach(function(k){ $(k).value = ''; });
-    $('pot').value = 0; hitung();
+    ['bahan','kemasan','tenaga','overhead','unit'].forEach(function(k){ $(k).value = ''; });
+    hitung();
   });
 
   relabel();
