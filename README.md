@@ -13,7 +13,7 @@ Dibuat [Tim LarisHQ](https://larishq.com). Lisensi MIT.
 
 Semua input adalah angka Anda. Tombol "Isi contoh" hanya mengisi contoh produksi keripik agar rumusnya mudah dicek, bukan data penjualan.
 
-Alat ini berhenti di HPP per unit. Harga jual minimum setelah potongan marketplace (Shopee, Tokopedia, TikTok Shop, WA) tidak dihitung di sini; itu ada di [Kalkulator Harga Jual Anti Rugi](https://lynk.id/radagon99/g39xk0wnq4x9) (Rp19.000).
+Alat ini berhenti di HPP per unit. Harga jual minimum setelah potongan marketplace (Shopee, Tokopedia, TikTok Shop, WA) tidak dihitung di sini; itu ada di [Kalkulator Harga Jual Anti Rugi](https://lynk.id/radagon99/g39xk0wnq4x9) (Rp39.000).
 
 ## Rumus
 
